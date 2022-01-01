@@ -127,6 +127,7 @@ function nextSequence(){
               
           }
           else if(currButton===k && arrayCheck===true){
+              arrayCheck=false;
               count=0;
               userInput.push(k);
               level++;
