@@ -9,6 +9,9 @@ var count=0;
 var restart=false;
 //tells about the first game
 var start=true;
+// to check , if the sequence is verified
+   var arrayCheck=false;
+
 // to detect key press to start the game
 $(document).keydown(function(event){
     if(event.key==="y" && start===true){
@@ -69,6 +72,8 @@ function nextSequence(){
 
     //game-over function
     function gameOver(){
+        //count reset
+        count=0;
         //when click in the starting
         $("h3").slideUp();
         //resetting user-input array
@@ -114,9 +119,14 @@ function nextSequence(){
 
       else{
           if(count<userInput.length && userInput[count]===k){
-              count++;
+              
+                count++;
+              if(userInput.length===count){
+                  arrayCheck=true;
+              }
+              
           }
-          else if(currButton===k){
+          else if(currButton===k && arrayCheck===true){
               count=0;
               userInput.push(k);
               level++;
